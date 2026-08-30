@@ -1264,6 +1264,244 @@ updateUI();
 loadLesson();
 
 </script>
+<!-- CYBERLAB LOGIN -->
+<div id="authScreen" style="
+position:fixed;
+inset:0;
+z-index:9999;
+background:#05080d;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+font-family:Arial,sans-serif;
+">
 
+<div style="
+width:100%;
+max-width:420px;
+background:#0c141e;
+border:1px solid #1d3447;
+border-radius:18px;
+padding:28px;
+box-shadow:0 0 40px rgba(69,255,154,.08);
+">
+
+<div style="text-align:center">
+
+<h1 style="color:#45ff9a;margin-bottom:5px">
+CYBERLAB
+</h1>
+
+<p style="color:#8da1b2">
+Área do aluno
+</p>
+
+</div>
+
+<input
+id="authEmail"
+type="email"
+placeholder="Seu e-mail"
+style="
+width:100%;
+padding:14px;
+margin:8px 0;
+background:#050a10;
+color:white;
+border:1px solid #294156;
+border-radius:8px;
+">
+
+<input
+id="authPassword"
+type="password"
+placeholder="Sua senha"
+style="
+width:100%;
+padding:14px;
+margin:8px 0;
+background:#050a10;
+color:white;
+border:1px solid #294156;
+border-radius:8px;
+">
+
+<button
+onclick="cyberLogin()"
+style="
+width:100%;
+padding:14px;
+margin-top:10px;
+background:#45ff9a;
+color:#031008;
+border:0;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+">
+ENTRAR
+</button>
+
+<button
+onclick="cyberRegister()"
+style="
+width:100%;
+padding:14px;
+margin-top:10px;
+background:#101c28;
+color:white;
+border:1px solid #294156;
+border-radius:8px;
+cursor:pointer;
+">
+CRIAR CONTA
+</button>
+
+<p
+id="authMessage"
+style="
+text-align:center;
+color:#8da1b2;
+margin-top:15px;
+">
+</p>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://lsximqltwzjdaocbousm.supabase.co";
+
+const SUPABASE_KEY =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzeGltcWx0d3pqZGFvY2JvdXNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDY5NjQsImV4cCI6MjEwMzY4Mjk2NH0.aIgodMSG1H4oR4QEoPd0a_MHoMsuodfF-DWdBaM2U1U";
+
+const cyberSupabase =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+async function cyberLogin(){
+
+const email =
+document.getElementById("authEmail").value.trim();
+
+const password =
+document.getElementById("authPassword").value;
+
+const message =
+document.getElementById("authMessage");
+
+if(!email || !password){
+
+message.textContent =
+"Digite seu e-mail e sua senha.";
+
+return;
+
+}
+
+message.textContent =
+"Entrando...";
+
+const {error} =
+await cyberSupabase.auth.signInWithPassword({
+email:email,
+password:password
+});
+
+if(error){
+
+message.textContent =
+"Erro: "+error.message;
+
+return;
+
+}
+
+message.textContent =
+"Login realizado!";
+
+setTimeout(()=>{
+document.getElementById("authScreen").style.display="none";
+},700);
+
+}
+
+
+async function cyberRegister(){
+
+const email =
+document.getElementById("authEmail").value.trim();
+
+const password =
+document.getElementById("authPassword").value;
+
+const message =
+document.getElementById("authMessage");
+
+if(!email || !password){
+
+message.textContent =
+"Digite um e-mail e uma senha.";
+
+return;
+
+}
+
+if(password.length < 6){
+
+message.textContent =
+"A senha precisa ter pelo menos 6 caracteres.";
+
+return;
+
+}
+
+message.textContent =
+"Criando sua conta...";
+
+const {error} =
+await cyberSupabase.auth.signUp({
+email:email,
+password:password
+});
+
+if(error){
+
+message.textContent =
+"Erro: "+error.message;
+
+return;
+
+}
+
+message.textContent =
+"Conta criada! Verifique seu e-mail para confirmar o cadastro.";
+
+}
+
+
+async function checkCyberSession(){
+
+const {data} =
+await cyberSupabase.auth.getSession();
+
+if(data.session){
+
+document.getElementById("authScreen").style.display="none";
+
+}
+
+}
+
+checkCyberSession();
+
+</script>
 </body>
 </html>
