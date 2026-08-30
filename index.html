@@ -1549,9 +1549,10 @@ CYBERLAB
 </div>
 
 <input
-id="authEmail"
-type="email"
-placeholder="Seu e-mail"
+id="authUsername"
+type="text"
+placeholder="Nome de usuário"
+autocomplete="username"
 style="
 width:100%;
 padding:14px;
@@ -1560,6 +1561,7 @@ background:#050a10;
 color:white;
 border:1px solid #294156;
 border-radius:8px;
+">
 ">
 
 <input
@@ -1637,8 +1639,8 @@ SUPABASE_KEY
 
 async function cyberLogin(){
 
-const email =
-document.getElementById("authEmail").value.trim();
+const username =
+document.getElementById("authUsername").value.trim();
 
 const password =
 document.getElementById("authPassword").value;
@@ -1646,10 +1648,10 @@ document.getElementById("authPassword").value;
 const message =
 document.getElementById("authMessage");
 
-if(!email || !password){
+if(!username || !password){
 
 message.textContent =
-"Digite seu e-mail e sua senha.";
+"Digite seu nome de usuário e sua senha.";
 
 return;
 
