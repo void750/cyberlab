@@ -3,27 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberLab V3</title>
+<title>CYBER MAFIA — Hacking Ético</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  background:#05080d;
-  color:#e8f0f8;
+  min-height:100vh;
+  background:#030608;
+  color:#eafff2;
   font-family:Arial,Helvetica,sans-serif;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 50% 0%,#123a26 0%,#06100b 35%,#020304 75%);
 }
 
 header{
   position:sticky;
   top:0;
-  z-index:10;
-  background:#080d14;
-  border-bottom:1px solid #1d3447;
-  padding:15px;
+  z-index:20;
+  background:rgba(3,7,5,.96);
+  border-bottom:1px solid #245c3c;
+  padding:12px;
 }
 
 nav{
@@ -32,271 +40,79 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:15px;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .logo{
   color:#45ff9a;
-  font-size:22px;
-  font-weight:bold;
-  letter-spacing:2px;
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-shadow:0 0 15px rgba(69,255,154,.5);
 }
 
-nav button{
-  background:#101a25;
+nav button,
+.btn{
+  background:#0c1a12;
   color:white;
-  border:1px solid #263c50;
-  padding:9px 12px;
-  border-radius:8px;
+  border:1px solid #27583b;
+  border-radius:9px;
+  padding:10px 14px;
   margin:3px;
+  cursor:pointer;
 }
 
-nav button:hover{
-  border-color:#45ff9a;
+.btn.primary{
+  background:#45ff9a;
+  color:#031008;
+  border:0;
+  font-weight:bold;
 }
 
 main{
   max-width:1100px;
   margin:auto;
-  padding:25px 15px 60px;
+  padding:25px 15px 70px;
 }
 
-section{
-  display:none;
-}
+section{display:none}
+section.active{display:block}
 
-section.active{
-  display:block;
+.hero,
+.card,
+.quiz,
+.challenge,
+.chat-container{
+  background:rgba(8,17,12,.95);
+  border:1px solid #1d4a31;
+  border-radius:16px;
+  padding:22px;
+  margin:15px 0;
 }
 
 .hero{
-  padding:45px 25px;
-  background:linear-gradient(135deg,#0b1824,#071018);
-  border:1px solid #1d3447;
-  border-radius:18px;
   text-align:center;
+  padding:55px 20px;
 }
 
 .hero h1{
   color:#45ff9a;
-  font-size:45px;
+  font-size:42px;
   margin:10px 0;
 }
 
-.hero p{
-  color:#9cafc0;
+h1,h2,h3{color:#bfffd8}
+
+p{
+  color:#9cb2a7;
   line-height:1.7;
-}
-
-.btn{
-  background:#45ff9a;
-  color:#031008;
-  border:0;
-  padding:13px 18px;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-  margin:5px;
-}
-
-.btn.secondary{
-  background:#111d29;
-  color:white;
-  border:1px solid #294156;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
-  margin-top:20px;
-}
-
-.card{
-  background:#0c141e;
-  border:1px solid #1d3447;
-  border-radius:14px;
-  padding:20px;
-}
-
-.card h3{
-  color:#45ff9a;
-}
-
-.card p{
-  color:#9cafc0;
-  line-height:1.6;
-}
-
-.progress{
-  height:10px;
-  background:#050a10;
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid #23384b;
-}
-
-.progress div{
-  height:100%;
-  width:0%;
-  background:#45ff9a;
-}
-
-.lesson{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px;
-  background:#0c141e;
-  border:1px solid #1d3447;
-  border-radius:10px;
-  margin:8px 0;
-}
-
-.lesson-number{
-  background:#122536;
-  color:#45ff9a;
-  padding:10px;
-  border-radius:8px;
-  font-weight:bold;
-}
-
-.lesson-info{
-  flex:1;
-}
-
-.lesson-info small{
-  color:#8298aa;
-}
-
-.video{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  margin:20px 0;
-}
-
-.video iframe{
-  width:100%;
-  height:100%;
-  border:0;
-  border-radius:12px;
-}
-
-.quiz{
-  margin-top:20px;
-  padding:20px;
-  background:#09121b;
-  border:1px solid #1d3447;
-  border-radius:12px;
-}
-
-.option{
-  display:block;
-  width:100%;
-  text-align:left;
-  background:#101c28;
-  color:white;
-  border:1px solid #294156;
-  padding:13px;
-  border-radius:8px;
-  margin:8px 0;
-  cursor:pointer;
-}
-
-.option:hover{
-  border-color:#45ff9a;
-}
-
-.correct{
-  border-color:#45ff9a!important;
-  background:#0c291b!important;
-}
-
-.wrong{
-  border-color:#ff5068!important;
-  background:#2b1016!important;
-}
-
-.feedback{
-  margin-top:12px;
-  padding:12px;
-  border-radius:8px;
-  display:none;
-}
-
-.feedback.show{
-  display:block;
-}
-
-.success{
-  color:#45ff9a;
-}
-
-.error{
-  color:#ff667c;
-}
-
-.challenge{
-  margin-top:20px;
-  padding:20px;
-  background:#0c141e;
-  border:1px solid #1d3447;
-  border-radius:12px;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  background:#050a10;
-  color:white;
-  border:1px solid #294156;
-  border-radius:8px;
-  outline:none;
-}
-
-.terminal{
-  background:#020507;
-  color:#62ff9f;
-  padding:18px;
-  border-radius:12px;
-  border:1px solid #1d472e;
-  font-family:monospace;
-  min-height:260px;
-}
-
-.terminal-output{
-  white-space:pre-wrap;
-  line-height:1.6;
-}
-
-.terminal-input{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.terminal-input span{
-  color:#45ff9a;
-}
-
-.terminal-input input{
-  border:0;
-  background:transparent;
-  font-family:monospace;
-}
-
-.badge{
-  display:inline-block;
-  padding:12px;
-  margin:5px;
-  background:#101c28;
-  border:1px solid #294156;
-  border-radius:10px;
-}
-
-.locked{
-  opacity:.45;
 }
 
 .stat{
@@ -309,311 +125,285 @@ input{
   font-size:30px;
 }
 
+.lesson{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#09130e;
+  border:1px solid #193b29;
+  border-radius:11px;
+  padding:14px;
+  margin:9px 0;
+}
+
+.lesson-info{
+  flex:1;
+}
+
+.lesson-number{
+  background:#10251a;
+  color:#45ff9a;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.progress{
+  height:12px;
+  background:#07100b;
+  border:1px solid #245c3c;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress div{
+  height:100%;
+  width:0;
+  background:#45ff9a;
+}
+
+.video{
+  aspect-ratio:16/9;
+  background:#020403;
+  border:1px solid #193b29;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#6f8c7b;
+  margin:15px 0;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:#0b1811;
+  color:white;
+  border:1px solid #27583b;
+  padding:14px;
+  border-radius:9px;
+  margin:8px 0;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:#45ff9a;
+}
+
+.correct{
+  border-color:#45ff9a!important;
+  background:#0d291a!important;
+}
+
+.wrong{
+  border-color:#ff526b!important;
+  background:#2a0d13!important;
+}
+
+.feedback{
+  display:none;
+  padding:13px;
+  border-radius:9px;
+  margin-top:10px;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.success{color:#45ff9a}
+.error{color:#ff687d}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  background:#050a07;
+  color:white;
+  border:1px solid #27583b;
+  border-radius:9px;
+  outline:none;
+}
+
+.auth{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#020504;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.auth-box{
+  width:100%;
+  max-width:410px;
+  background:#09130e;
+  border:1px solid #245c3c;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 0 45px rgba(69,255,154,.08);
+}
+
+.chat-box{
+  height:320px;
+  overflow:auto;
+  background:#020604;
+  border:1px solid #193b29;
+  border-radius:10px;
+  padding:12px;
+}
+
+.message{
+  padding:10px;
+  border-radius:9px;
+  margin:8px 0;
+  white-space:pre-wrap;
+}
+
+.bot{
+  background:#0c1d13;
+  color:#bfffd8;
+}
+
+.user{
+  background:#13241a;
+  text-align:right;
+}
+
 footer{
   text-align:center;
-  color:#617789;
+  color:#60786b;
   padding:25px;
-  border-top:1px solid #1d3447;
-  font-size:13px;
+  border-top:1px solid #193b29;
 }
 
 @media(max-width:600px){
-  .hero h1{
-    font-size:34px;
-  }
-
-  nav{
-    flex-wrap:wrap;
-  }
+  .hero h1{font-size:32px}
+  .lesson{align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
-<!-- PAINEL DO ALUNO CYBERLAB -->
 
-<div id="studentPanel" style="
-display:none;
-min-height:100vh;
-background:#05080d;
-color:white;
-font-family:Arial,sans-serif;
-padding:25px 18px;
-">
+<!-- LOGIN -->
 
-<div style="
-max-width:900px;
-margin:auto;
-">
+<div id="loginScreen" class="auth">
 
-<h1 style="
-color:#45ff9a;
-margin-bottom:5px;
-">
-CYBERLAB
-</h1>
+<div class="auth-box">
 
-<p style="color:#8da1b2;">
-Painel do aluno
-</p>
+<div style="text-align:center">
 
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-border-radius:15px;
-padding:20px;
-margin:20px 0;
-">
+<div class="logo">CYBER MAFIA</div>
 
-<h2>👋 Bem-vindo!</h2>
-
-<p style="color:#8da1b2;">
-Continue seu treinamento de Cibersegurança.
-</p>
-
-<div style="
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-">
-
-<div style="
-flex:1;
-min-width:140px;
-background:#101c28;
-padding:15px;
-border-radius:10px;
-">
-
-<strong style="color:#45ff9a;">
-⭐ XP
-</strong>
-
-<h2 id="xpValue">0</h2>
+<p>Academia de Hacking Ético</p>
 
 </div>
 
-<div style="
-flex:1;
-min-width:140px;
-background:#101c28;
-padding:15px;
-border-radius:10px;
-">
+<input
+id="username"
+type="text"
+placeholder="Nome de usuário"
+autocomplete="username"
+>
 
-<strong style="color:#45ff9a;">
-📊 Progresso
-</strong>
-
-<h2 id="progressValue">0%</h2>
-
-</div>
-
-</div>
-
-</div>
-
-<h2>📚 Seus módulos</h2>
-
-<div id="modulesContainer">
-
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-padding:18px;
-border-radius:12px;
-margin:12px 0;
-">
-
-<h3>🌐 Módulo 1 — Redes</h3>
-
-<p style="color:#8da1b2;">
-20 perguntas
-</p>
+<input
+id="password"
+type="password"
+placeholder="Senha"
+autocomplete="current-password"
+>
 
 <button
-onclick="startModule(1)"
-style="
-padding:12px 18px;
-background:#45ff9a;
-border:0;
-border-radius:8px;
-font-weight:bold;
-">
-COMEÇAR
+class="btn primary"
+style="width:100%"
+onclick="login()"
+>
+ENTRAR
 </button>
-
-</div>
-
-
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-padding:18px;
-border-radius:12px;
-margin:12px 0;
-">
-
-<h3>🐧 Módulo 2 — Linux</h3>
-
-<p style="color:#8da1b2;">
-20 perguntas
-</p>
 
 <button
-onclick="startModule(2)"
-style="
-padding:12px 18px;
-background:#45ff9a;
-border:0;
-border-radius:8px;
-font-weight:bold;
-">
-COMEÇAR
+class="btn"
+style="width:100%"
+onclick="register()"
+>
+CRIAR CONTA
 </button>
 
-</div>
-
-
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-padding:18px;
-border-radius:12px;
-margin:12px 0;
-">
-
-<h3>🔐 Módulo 3 — Segurança da Informação</h3>
-
-<p style="color:#8da1b2;">
-20 perguntas
-</p>
-
-<button
-onclick="startModule(3)"
-style="
-padding:12px 18px;
-background:#45ff9a;
-border:0;
-border-radius:8px;
-font-weight:bold;
-">
-COMEÇAR
-</button>
-
-</div>
-
-
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-padding:18px;
-border-radius:12px;
-margin:12px 0;
-">
-
-<h3>🕵️ Módulo 4 — Hacking Ético</h3>
-
-<p style="color:#8da1b2;">
-20 perguntas
-</p>
-
-<button
-onclick="startModule(4)"
-style="
-padding:12px 18px;
-background:#45ff9a;
-border:0;
-border-radius:8px;
-font-weight:bold;
-">
-COMEÇAR
-</button>
-
-</div>
-
-
-<div style="
-background:#0c141e;
-border:1px solid #1d3447;
-padding:18px;
-border-radius:12px;
-margin:12px 0;
-">
-
-<h3>🧪 Módulo 5 — Laboratório & CTF</h3>
-
-<p style="color:#8da1b2;">
-20 perguntas
-</p>
-
-<button
-onclick="startModule(5)"
-style="
-padding:12px 18px;
-background:#45ff9a;
-border:0;
-border-radius:8px;
-font-weight:bold;
-">
-COMEÇAR
-</button>
+<p id="loginMessage"></p>
 
 </div>
 
 </div>
 
-</div>
+<!-- MENU -->
 
-</div>
-
-<script>
-
-function startModule(module){
-
-alert(
-"Módulo " +
-module +
-" selecionado! Em breve você começará as perguntas."
-);
-
-}
-
-</script>
 <header>
+
 <nav>
 
-<div class="logo">CYBERLAB</div>
+<div class="logo">
+CYBER MAFIA
+</div>
 
 <div>
-<button onclick="showPage('inicio')">Início</button>
-<button onclick="showPage('cursos')">Cursos</button>
-<button onclick="showPage('aula')">Aulas</button>
-<button onclick="showPage('lab')">Laboratório</button>
-<button onclick="showPage('progresso')">Progresso</button>
+
+<button onclick="showPage('home')">
+Início
+</button>
+
+<button onclick="showPage('lessons')">
+Aulas
+</button>
+
+<button onclick="showPage('progress')">
+Progresso
+</button>
+
+<button onclick="showPage('assistant')">
+🤖 Ajuda
+</button>
+
+<button onclick="logout()">
+Sair
+</button>
+
 </div>
 
 </nav>
+
 </header>
 
 <main>
 
 <!-- INÍCIO -->
 
-<section id="inicio" class="active">
+<section id="home" class="active">
 
 <div class="hero">
 
-<p>ACADEMIA INTERATIVA DE CIBERSEGURANÇA</p>
-
-<h1>CYBERLAB V3</h1>
-
 <p>
-Aprenda cibersegurança através de aulas,
-vídeos, exercícios, quizzes e desafios.
+ACADEMIA INTERATIVA DE CIBERSEGURANÇA
 </p>
 
-<button class="btn" onclick="openLesson(0)">
+<h1>
+CYBER MAFIA
+</h1>
+
+<p>
+Aprenda redes, Linux, segurança web,
+pentest ético e defesa através de aulas
+e exercícios controlados.
+</p>
+
+<button
+class="btn primary"
+onclick="showPage('lessons')"
+>
 COMEÇAR CURSO
 </button>
 
@@ -622,275 +412,126 @@ COMEÇAR CURSO
 <div class="grid">
 
 <div class="card stat">
-<strong id="homeXP">0</strong>
+<strong id="xp">0</strong>
 XP
 </div>
 
 <div class="card stat">
-<strong id="homeLevel">1</strong>
-Nível
-</div>
-
-<div class="card stat">
-<strong id="homeProgress">0%</strong>
+<strong id="percent">0%</strong>
 Progresso
 </div>
 
-</div>
-
-<h2>Como funciona</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>🎥 Aulas</h3>
-<p>
-Assista às explicações e leia o conteúdo antes de realizar os exercícios.
-</p>
-</div>
-
-<div class="card">
-<h3>🧠 Quiz</h3>
-<p>
-Responda perguntas e receba feedback imediatamente.
-</p>
-</div>
-
-<div class="card">
-<h3>🎯 Desafios</h3>
-<p>
-Complete desafios educativos para avançar.
-</p>
-</div>
-
-<div class="card">
-<h3>🏆 XP</h3>
-<p>
-Ganhe experiência e desbloqueie conquistas.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CURSOS -->
-
-<section id="cursos">
-
-<h1>Cursos</h1>
-
-<p>
-Comece pelos fundamentos e avance gradualmente.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>🌐 Redes</h3>
-<p>IP, DNS, portas, TCP, UDP e comunicação.</p>
-</div>
-
-<div class="card">
-<h3>🐧 Linux</h3>
-<p>Terminal, arquivos, permissões e processos.</p>
-</div>
-
-<div class="card">
-<h3>🔐 Segurança</h3>
-<p>Princípios fundamentais de segurança da informação.</p>
-</div>
-
-<div class="card">
-<h3>🕵️ Pentest Ético</h3>
-<p>Metodologia e testes somente em ambientes autorizados.</p>
-</div>
-
-<div class="card">
-<h3>🧪 Laboratórios</h3>
-<p>Ambientes simulados para praticar com segurança.</p>
-</div>
-
-<div class="card">
-<h3>🏁 CTF</h3>
-<p>Desafios controlados de raciocínio e análise.</p>
-</div>
-
-</div>
-
-<h2>Módulo 01 — Fundamentos</h2>
-
-<div id="courseLessons"></div>
-
-</section>
-
-
-<!-- AULAS -->
-
-<section id="aula">
-
-<div id="lessonContent">
-
-<h1 id="lessonTitle">Aula</h1>
-
-<p id="lessonDescription"></p>
-
-<div class="video">
-
-<iframe
-src="https://www.youtube.com/embed/ug8W0sFiVJo"
-title="Aula complementar"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<div class="card">
-
-<h3>📖 Explicação</h3>
-
-<p id="lessonExplanation"></p>
-
-</div>
-
-<div class="quiz">
-
-<h3>🧠 Quiz</h3>
-
-<p id="question"></p>
-
-<div id="options"></div>
-
-<div id="feedback" class="feedback"></div>
-
-</div>
-
-<div class="challenge">
-
-<h3>🎯 Desafio</h3>
-
-<p id="challengeQuestion"></p>
-
-<input
-id="challengeInput"
-placeholder="Digite sua resposta">
-
-<button class="btn" onclick="checkChallenge()">
-VERIFICAR
-</button>
-
-<div id="challengeResult"></div>
-
-</div>
-
-<br>
-
-<button class="btn secondary" onclick="previousLesson()">
-← Aula anterior
-</button>
-
-<button class="btn" onclick="nextLesson()">
-Próxima aula →
-</button>
-
-</div>
-
-</section>
-
-
-<!-- LABORATÓRIO -->
-
-<section id="lab">
-
-<h1>Laboratório</h1>
-
-<p>
-Terminal simulado para treinamento. Os comandos abaixo
-não executam ações no seu computador nem acessam sistemas externos.
-</p>
-
-<div class="terminal">
-
-<div class="terminal-output" id="terminalOutput">
-CyberLab Training Terminal v3.0
-
-LABORATÓRIO: SIMULAÇÃO
-
-Digite "help" para ver os comandos disponíveis.
-</div>
-
-<div class="terminal-input">
-
-<span>student@cyberlab:~$</span>
-
-<input
-id="terminalInput"
-autocomplete="off">
-
-</div>
-
-</div>
-
-<div class="challenge">
-
-<h3>🎯 Mini desafio</h3>
-
-<p>
-Qual porta é normalmente associada ao HTTPS?
-</p>
-
-<button class="option" onclick="labAnswer(this,22)">
-22
-</button>
-
-<button class="option" onclick="labAnswer(this,80)">
-80
-</button>
-
-<button class="option" onclick="labAnswer(this,443)">
-443
-</button>
-
-<button class="option" onclick="labAnswer(this,25)">
-25
-</button>
-
-<div id="labResult"></div>
-
-</div>
-
-</section>
-
-
-<!-- PROGRESSO -->
-
-<section id="progresso">
-
-<h1>Meu progresso</h1>
-
-<div class="grid">
-
 <div class="card stat">
-<strong id="profileXP">0</strong>
-XP
-</div>
-
-<div class="card stat">
-<strong id="profileLevel">1</strong>
-Nível
-</div>
-
-<div class="card stat">
-<strong id="profileCompleted">0</strong>
+<strong id="completed">0</strong>
 Aulas concluídas
 </div>
 
 </div>
 
+</section>
+
+<!-- AULAS -->
+
+<section id="lessons">
+
+<h1>📚 Curso — 100 Aulas</h1>
+
+<p>
+Assista ao conteúdo, leia a explicação e responda
+à pergunta. É necessário acertar para avançar.
+</p>
+
+<div id="lessonList"></div>
+
+</section>
+
+<!-- AULA -->
+
+<section id="lesson">
+
+<h1 id="lessonTitle">
+Aula
+</h1>
+
+<p id="lessonDescription"></p>
+
+<div class="video">
+
+<div>
+
+🎥
+<br><br>
+
+<strong>
+VÍDEO DA AULA
+</strong>
+
+<br>
+
+<small>
+O espaço para o vídeo correspondente
+será configurado nesta aula.
+</small>
+
+</div>
+
+</div>
+
 <div class="card">
 
-<h3>Progresso da trilha</h3>
+<h3>
+📖 Explicação
+</h3>
+
+<p id="lessonText"></p>
+
+</div>
+
+<div class="quiz">
+
+<h3>
+❓ Pergunta
+</h3>
+
+<p id="question"></p>
+
+<div id="options"></div>
+
+<div
+id="feedback"
+class="feedback"
+>
+</div>
+
+<button
+id="nextButton"
+class="btn primary"
+style="display:none"
+onclick="nextLesson()"
+>
+PRÓXIMA AULA →
+</button>
+
+</div>
+
+<button
+class="btn"
+onclick="showPage('lessons')"
+>
+← VOLTAR
+</button>
+
+</section>
+
+<!-- PROGRESSO -->
+
+<section id="progress">
+
+<h1>
+📊 Meu progresso
+</h1>
+
+<div class="card">
 
 <div class="progress">
 
@@ -904,13 +545,56 @@ Aulas concluídas
 
 </div>
 
-<h2>Conquistas</h2>
-
-<div id="badges"></div>
-
-<h2>Resultados</h2>
-
 <div id="results"></div>
+
+</section>
+
+<!-- ASSISTENTE -->
+
+<section id="assistant">
+
+<h1>
+🤖 Assistente Cyber Mafia
+</h1>
+
+<p>
+Use este chat para pedir explicações sobre
+os conteúdos do curso.
+</p>
+
+<div class="chat-container">
+
+<div
+id="chatBox"
+class="chat-box"
+>
+
+<div class="message bot">
+Olá! Sou o Assistente Cyber Mafia.
+Posso ajudar a explicar os conteúdos
+do curso e orientar seus estudos.
+</div>
+
+</div>
+
+<div style="display:flex;gap:8px">
+
+<input
+id="chatInput"
+placeholder="Digite sua dúvida..."
+onkeydown="if(event.key==='Enter')sendMessage()"
+>
+
+<button
+class="btn primary"
+onclick="sendMessage()"
+>
+Enviar
+</button>
+
+</div>
+
+</div>
 
 </section>
 
@@ -918,117 +602,338 @@ Aulas concluídas
 
 <footer>
 
-CyberLab V3 · Aprendizado de cibersegurança ética.
-Pratique somente em sistemas próprios ou ambientes autorizados.
+CYBER MAFIA · Hacking Ético
+
+<br>
+
+Pratique somente em sistemas próprios,
+laboratórios ou ambientes autorizados.
 
 </footer>
 
-
 <script>
+
+/* =========================
+   DADOS DAS AULAS
+========================= */
 
 const lessons = [
 
 {
 title:"O que é Cibersegurança?",
-description:"Entenda o objetivo da cibersegurança e por que ela é importante.",
-explanation:"Cibersegurança é o conjunto de práticas utilizadas para proteger sistemas, redes, aplicações e dados contra ameaças. Um profissional de segurança precisa entender tecnologia, riscos e principalmente os limites de autorização.",
+text:"Cibersegurança é o conjunto de práticas usadas para proteger sistemas, redes, aplicações e dados contra ameaças.",
 question:"Qual é um dos principais objetivos da cibersegurança?",
 options:[
-"Deixar todos os sistemas públicos",
-"Proteger sistemas e dados contra ameaças",
-"Desativar todas as senhas",
-"Testar qualquer computador da internet"
+"Proteger sistemas e dados",
+"Deixar sistemas sem proteção",
+"Remover todas as senhas",
+"Atacar computadores aleatórios"
 ],
-answer:1,
-why:"A cibersegurança busca proteger sistemas, redes e informações contra ameaças e reduzir riscos.",
-challenge:"SEGURANÇA",
-xp:100
+answer:0,
+why:"A cibersegurança busca proteger sistemas, redes e informações.",
+xp:50
 },
 
 {
 title:"O que é Hacking Ético?",
-description:"Aprenda a diferença entre testar segurança e atacar um sistema.",
-explanation:"Hacking ético é realizado com autorização e objetivo definido. Profissionais podem procurar vulnerabilidades para ajudar a corrigi-las, respeitando escopo, regras de engajamento e limites.",
-question:"O que é indispensável em um teste de segurança ético?",
+text:"Hacking ético consiste em avaliar sistemas com autorização e objetivo definido para encontrar problemas e ajudar a corrigi-los.",
+question:"O que é indispensável em um teste ético?",
 options:[
 "Autorização",
-"Esconder a atividade",
-"Atacar qualquer alvo",
-"Não documentar nada"
+"Esconder o teste",
+"Atacar qualquer sistema",
+"Não documentar"
 ],
 answer:0,
-why:"A autorização define que a atividade é permitida e ajuda a estabelecer os limites do teste.",
-challenge:"AUTORIZAÇÃO",
-xp:120
+why:"A autorização define que o teste é permitido.",
+xp:50
 },
 
 {
 title:"Tipos de Hackers",
-description:"Conheça os principais conceitos usados para descrever diferentes perfis.",
-explanation:"Os termos white hat, black hat e grey hat são usados para descrever contextos diferentes de atuação. No ambiente profissional, autorização, intenção e escopo são fundamentais.",
-question:"Qual característica é fundamental em um trabalho profissional?",
+text:"White hat, black hat e grey hat são termos usados para diferenciar contextos de atuação. Em segurança profissional, autorização e escopo são fundamentais.",
+question:"Qual característica é essencial em um teste profissional?",
 options:[
 "Ignorar o escopo",
-"Respeitar as regras definidas",
+"Respeitar as regras",
 "Testar qualquer alvo",
 "Evitar documentação"
 ],
 answer:1,
-why:"Respeitar regras e escopo reduz riscos e mantém o trabalho dentro da autorização.",
-challenge:"ESCOPO",
-xp:120
+why:"Respeitar regras e escopo mantém a atividade dentro da autorização.",
+xp:50
 },
 
 {
-title:"Ética e Autorização",
-description:"Aprenda a preparar uma atividade de segurança de forma responsável.",
-explanation:"Antes de um teste profissional, é importante definir autorização, escopo, janela de teste, contatos e limites. Sem autorização, utilize apenas laboratórios próprios e plataformas de treinamento.",
-question:"O que fazer quando você não tem certeza se pode testar um sistema?",
+title:"Autorização e Escopo",
+text:"Antes de um teste, é importante definir quais sistemas podem ser avaliados, quando o teste pode ocorrer e quais ações são permitidas.",
+question:"O que deve ser confirmado antes de um teste?",
 options:[
-"Testar escondido",
-"Pedir autorização e confirmar o escopo",
-"Usar outra conta",
-"Testar somente de madrugada"
+"O escopo e a autorização",
+"Apenas o horário",
+"Somente o nome do cliente",
+"Nada"
 ],
-answer:1,
-why:"Confirmar autorização e escopo é a forma correta de evitar atividades não autorizadas.",
-challenge:"ESCOPO",
-xp:140
+answer:0,
+why:"Escopo e autorização determinam os limites do trabalho.",
+xp:50
 },
 
 {
-title:"Criando um Laboratório",
-description:"Aprenda como estudar segurança em um ambiente controlado.",
-explanation:"Máquinas virtuais, CTFs e aplicações criadas para treinamento permitem praticar de forma segura. O objetivo é separar o ambiente de aprendizagem dos sistemas reais.",
-question:"Qual é uma boa opção para praticar?",
+title:"Laboratório Seguro",
+text:"Máquinas virtuais, CTFs e aplicações criadas para treinamento permitem praticar segurança sem atingir sistemas de terceiros.",
+question:"Onde é adequado praticar?",
 options:[
-"Um site aleatório",
-"Uma máquina de laboratório própria",
-"A conta de outra pessoa",
-"O roteador de um vizinho"
+"Laboratório próprio ou autorizado",
+"Site aleatório",
+"Conta de outra pessoa",
+"Computador de um desconhecido"
 ],
-answer:1,
-why:"Um laboratório próprio ou autorizado permite praticar sem atingir terceiros.",
-challenge:"LAB",
-xp:180
+answer:0,
+why:"Ambientes próprios ou autorizados permitem treinamento seguro.",
+xp:50
 }
 
 ];
 
+/*
+   A estrutura abaixo está preparada
+   para receber as 100 aulas.
+*/
+
+while(lessons.length < 100){
+
+const n=lessons.length+1;
+
+lessons.push({
+
+title:"Aula "+n+" — Conteúdo de Cibersegurança",
+
+text:"Nesta aula você estudará um conceito importante de cibersegurança. Leia a explicação, compreenda o conceito e responda à pergunta.",
+
+question:"Qual atitude é adequada durante o aprendizado de hacking ético?",
+
+options:[
+"Praticar somente em ambientes autorizados",
+"Atacar sistemas desconhecidos",
+"Roubar informações",
+"Ignorar as regras"
+],
+
+answer:0,
+
+why:"O estudo deve ocorrer em sistemas próprios, laboratórios ou ambientes explicitamente autorizados.",
+
+xp:50
+
+});
+
+}
+
+
+/* =========================
+   ESTADO
+========================= */
+
 let currentLesson=0;
 
-let data=JSON.parse(
-localStorage.getItem("cyberlabData")
-||
-'{"xp":0,"completed":[],"scores":{}}'
-);
+let user=null;
+
+let data={
+xp:0,
+completed:[]
+};
 
 
-function save(){
+/* =========================
+   CONTAS LOCAIS
+========================= */
+
+function accountKey(name){
+
+return "cyberMafiaAccount_"+name.toLowerCase();
+
+}
+
+
+function register(){
+
+const u=
+document.getElementById("username")
+.value
+.trim()
+.toLowerCase();
+
+const p=
+document.getElementById("password")
+.value;
+
+const message=
+document.getElementById("loginMessage");
+
+if(!u || !p){
+
+message.textContent=
+"Digite usuário e senha.";
+
+return;
+
+}
+
+if(u.length<3){
+
+message.textContent=
+"O usuário precisa ter pelo menos 3 caracteres.";
+
+return;
+
+}
+
+if(p.length<6){
+
+message.textContent=
+"A senha precisa ter pelo menos 6 caracteres.";
+
+return;
+
+}
+
+if(localStorage.getItem(accountKey(u))){
+
+message.textContent=
+"Esse usuário já existe.";
+
+return;
+
+}
 
 localStorage.setItem(
-"cyberlabData",
-JSON.stringify(data)
+
+accountKey(u),
+
+JSON.stringify({
+
+username:u,
+
+password:p,
+
+xp:0,
+
+completed:[]
+
+})
+
+);
+
+message.textContent=
+"Conta criada! Agora toque em ENTRAR.";
+
+}
+
+
+function login(){
+
+const u=
+document.getElementById("username")
+.value
+.trim()
+.toLowerCase();
+
+const p=
+document.getElementById("password")
+.value;
+
+const message=
+document.getElementById("loginMessage");
+
+const raw=
+localStorage.getItem(accountKey(u));
+
+if(!raw){
+
+message.textContent=
+"Usuário não encontrado.";
+
+return;
+
+}
+
+const account=
+JSON.parse(raw);
+
+if(account.password!==p){
+
+message.textContent=
+"Senha incorreta.";
+
+return;
+
+}
+
+user=u;
+
+data={
+
+xp:account.xp||0,
+
+completed:account.completed||[]
+
+};
+
+localStorage.setItem(
+"cyberMafiaCurrentUser",
+u
+);
+
+document.getElementById(
+"loginScreen"
+).style.display="none";
+
+updateUI();
+
+showPage("home");
+
+}
+
+
+function logout(){
+
+user=null;
+
+document.getElementById(
+"loginScreen"
+).style.display="flex";
+
+}
+
+
+/* =========================
+   SALVAR PROGRESSO
+========================= */
+
+function saveData(){
+
+if(!user)return;
+
+localStorage.setItem(
+
+accountKey(user),
+
+JSON.stringify({
+
+username:user,
+
+password:JSON.parse(
+localStorage.getItem(
+accountKey(user)
+)).password,
+
+xp:data.xp,
+
+completed:data.completed
+
+})
+
 );
 
 updateUI();
@@ -1036,21 +941,20 @@ updateUI();
 }
 
 
-function level(){
+/* =========================
+   NAVEGAÇÃO
+========================= */
 
-return Math.floor(data.xp/500)+1;
-
-}
-
-
-function showPage(page){
+function showPage(id){
 
 document
-.querySelectorAll("section")
-.forEach(s=>s.classList.remove("active"));
+.querySelectorAll("main section")
+.forEach(section=>{
+section.classList.remove("active");
+});
 
 document
-.getElementById(page)
+.getElementById(id)
 .classList.add("active");
 
 window.scrollTo(0,0);
@@ -1058,273 +962,57 @@ window.scrollTo(0,0);
 }
 
 
-function openLesson(index){
-
-currentLesson=index;
-
-loadLesson();
-
-showPage("aula");
-
-}
-
-
-function loadLesson(){
-
-let l=lessons[currentLesson];
-
-document.getElementById("lessonTitle").textContent=
-"Aula "+(currentLesson+1)+" — "+l.title;
-
-document.getElementById("lessonDescription").textContent=
-l.description;
-
-document.getElementById("lessonExplanation").textContent=
-l.explanation;
-
-document.getElementById("question").textContent=
-l.question;
-
-let options=document.getElementById("options");
-
-options.innerHTML="";
-
-l.options.forEach((option,index)=>{
-
-let button=document.createElement("button");
-
-button.className="option";
-
-button.textContent=option;
-
-button.onclick=()=>answerQuiz(index,button);
-
-options.appendChild(button);
-
-});
-
-document.getElementById("feedback").className="feedback";
-
-document.getElementById("feedback").textContent="";
-
-document.getElementById("challengeInput").value="";
-
-document.getElementById("challengeQuestion").textContent=
-"Digite a palavra-chave: "+l.challenge;
-
-document.getElementById("challengeResult").textContent="";
-
-}
-
-
-function answerQuiz(index,button){
-
-let l=lessons[currentLesson];
-
-let all=document.querySelectorAll("#options .option");
-
-all.forEach((b,i)=>{
-
-if(i===l.answer){
-
-b.classList.add("correct");
-
-}
-
-});
-
-let feedback=document.getElementById("feedback");
-
-feedback.classList.add("show");
-
-if(index===l.answer){
-
-button.classList.add("correct");
-
-feedback.classList.add("success");
-
-feedback.textContent=
-"✅ Correto! "+l.why;
-
-data.scores[currentLesson]=100;
-
-if(!data.quizRewarded){
-
-data.xp+=50;
-
-data.quizRewarded=true;
-
-}
-
-}else{
-
-button.classList.add("wrong");
-
-feedback.classList.add("error");
-
-feedback.textContent=
-"❌ Ainda não. "+l.why;
-
-data.scores[currentLesson]=0;
-
-}
-
-save();
-
-}
-
-
-function checkChallenge(){
-
-let l=lessons[currentLesson];
-
-let input=
-document.getElementById("challengeInput")
-.value
-.trim()
-.toUpperCase();
-
-let result=
-document.getElementById("challengeResult");
-
-if(input===l.challenge){
-
-if(!data.completed.includes(currentLesson)){
-
-data.completed.push(currentLesson);
-
-data.xp+=l.xp;
-
-}
-
-result.className="success";
-
-result.textContent=
-"✅ Desafio concluído! Você ganhou "+l.xp+" XP.";
-
-save();
-
-}else{
-
-result.className="error";
-
-result.textContent=
-"❌ Resposta incorreta. Revise a aula e tente novamente.";
-
-}
-
-}
-
-
-function nextLesson(){
-
-if(currentLesson<lessons.length-1){
-
-currentLesson++;
-
-loadLesson();
-
-}else{
-
-alert("🎉 Você chegou ao final do módulo!");
-
-showPage("progresso");
-
-}
-
-}
-
-
-function previousLesson(){
-
-if(currentLesson>0){
-
-currentLesson--;
-
-loadLesson();
-
-}
-
-}
-
-
-function updateUI(){
-
-let percent=
-Math.round(
-(data.completed.length/lessons.length)*100
-);
-
-document.getElementById("homeXP").textContent=
-data.xp;
-
-document.getElementById("homeLevel").textContent=
-level();
-
-document.getElementById("homeProgress").textContent=
-percent+"%";
-
-document.getElementById("profileXP").textContent=
-data.xp;
-
-document.getElementById("profileLevel").textContent=
-level();
-
-document.getElementById("profileCompleted").textContent=
-data.completed.length;
-
-document.getElementById("progressBar").style.width=
-percent+"%";
-
-document.getElementById("progressText").textContent=
-percent+"% concluído";
-
-renderLessons();
-
-renderBadges();
-
-renderResults();
-
-}
-
+/* =========================
+   LISTA DE AULAS
+========================= */
 
 function renderLessons(){
 
-let container=
-document.getElementById("courseLessons");
+const container=
+document.getElementById("lessonList");
 
 container.innerHTML="";
 
 lessons.forEach((lesson,index)=>{
 
-let div=document.createElement("div");
+const div=
+document.createElement("div");
 
 div.className="lesson";
 
-let done=
+const done=
 data.completed.includes(index);
 
 div.innerHTML=`
 
 <div class="lesson-number">
+
 ${String(index+1).padStart(2,"0")}
+
 </div>
 
 <div class="lesson-info">
 
-<b>${lesson.title}</b>
+<b>
+${lesson.title}
+</b>
 
 <br>
 
 <small>
-${done?"✅ Concluída":"▶ Disponível"} ·
-${lesson.xp} XP
+
+${done?"✅ Concluída":"▶ Disponível"}
+
+· ${lesson.xp} XP
+
 </small>
 
 </div>
 
 <button class="btn">
-Abrir
+
+ABRIR
+
 </button>
 
 `;
@@ -1338,422 +1026,345 @@ container.appendChild(div);
 }
 
 
-function renderBadges(){
+/* =========================
+   ABRIR AULA
+========================= */
 
-let badges=document.getElementById("badges");
+function openLesson(index){
 
-let list=[
+currentLesson=index;
 
-["🌱","Primeiro passo",data.completed.length>=1],
+const lesson=
+lessons[currentLesson];
 
-["🧠","Estudante",data.completed.length>=2],
+document.getElementById(
+"lessonTitle"
+).textContent=
+"Aula "+(index+1)+" — "+lesson.title;
 
-["🧪","Lab Explorer",data.xp>=300],
+document.getElementById(
+"lessonDescription"
+).textContent=
+"Estude o conteúdo abaixo antes de responder.";
 
-["🏆","Fundamentos",data.completed.length===lessons.length]
+document.getElementById(
+"lessonText"
+).textContent=
+lesson.text;
 
-];
+document.getElementById(
+"question"
+).textContent=
+lesson.question;
 
-badges.innerHTML="";
+const options=
+document.getElementById("options");
 
-list.forEach(b=>{
+options.innerHTML="";
 
-let div=document.createElement("div");
+lesson.options.forEach(
+(option,index)=>{
 
-div.className=
-"badge "+(!b[2]?"locked":"");
+const button=
+document.createElement("button");
 
-div.innerHTML=
-b[0]+" "+b[1]+
-"<br><small>"+
-(b[2]?"Desbloqueado":"Bloqueado")+
-"</small>";
+button.className="option";
 
-badges.appendChild(div);
+button.textContent=
+String.fromCharCode(65+index)+") "+option;
+
+button.onclick=
+()=>answerQuestion(index,button);
+
+options.appendChild(button);
 
 });
+
+const feedback=
+document.getElementById("feedback");
+
+feedback.className="feedback";
+
+feedback.textContent="";
+
+document.getElementById(
+"nextButton"
+).style.display="none";
+
+showPage("lesson");
+
+}
+
+
+/* =========================
+   RESPONDER
+========================= */
+
+function answerQuestion(index,button){
+
+const lesson=
+lessons[currentLesson];
+
+const feedback=
+document.getElementById("feedback");
+
+if(index===lesson.answer){
+
+button.classList.add("correct");
+
+feedback.className=
+"feedback show success";
+
+feedback.textContent=
+"✅ Correto! "+lesson.why;
+
+if(!data.completed.includes(currentLesson)){
+
+data.completed.push(currentLesson);
+
+data.xp+=lesson.xp;
+
+saveData();
+
+}
+
+document.getElementById(
+"nextButton"
+).style.display="inline-block";
+
+}else{
+
+button.classList.add("wrong");
+
+feedback.className=
+"feedback show error";
+
+feedback.textContent=
+"❌ Resposta incorreta. "+
+lesson.why+
+" Tente novamente.";
+
+setTimeout(()=>{
+
+button.classList.remove("wrong");
+
+},700);
+
+}
+
+}
+
+
+/* =========================
+   PRÓXIMA AULA
+========================= */
+
+function nextLesson(){
+
+if(currentLesson<lessons.length-1){
+
+openLesson(currentLesson+1);
+
+}else{
+
+showPage("progress");
+
+}
+
+}
+
+
+/* =========================
+   INTERFACE
+========================= */
+
+function updateUI(){
+
+const percentage=
+Math.round(
+(data.completed.length/
+lessons.length)*100
+);
+
+document.getElementById(
+"xp"
+).textContent=data.xp;
+
+document.getElementById(
+"percent"
+).textContent=
+percentage+"%";
+
+document.getElementById(
+"completed"
+).textContent=
+data.completed.length;
+
+document.getElementById(
+"progressBar"
+).style.width=
+percentage+"%";
+
+document.getElementById(
+"progressText"
+).textContent=
+percentage+"% concluído";
+
+renderLessons();
+
+renderResults();
 
 }
 
 
 function renderResults(){
 
-let div=document.getElementById("results");
+const results=
+document.getElementById("results");
 
-div.innerHTML="";
+results.innerHTML="";
 
-lessons.forEach((l,i)=>{
+lessons.forEach((lesson,index)=>{
 
-let score=
-data.scores[i]!==undefined
-?data.scores[i]+"%"
-:"—";
+const div=
+document.createElement("div");
 
-let status=
-data.completed.includes(i)
+div.className="card";
+
+div.innerHTML=
+"<b>Aula "+(index+1)+
+" — "+lesson.title+
+"</b><br><small>"+
+(data.completed.includes(index)
 ?"✅ Concluída"
-:"⏳ Em andamento";
+:"⏳ Pendente")+
+"</small>";
 
-let p=document.createElement("p");
-
-p.innerHTML=
-"<b>"+(i+1)+". "+l.title+
-"</b> — "+status+
-" — Nota: "+score;
-
-div.appendChild(p);
+results.appendChild(div);
 
 });
 
 }
 
 
-const commands={
+/* =========================
+   CHAT DE AJUDA
+========================= */
 
-help:"Comandos: help, whoami, pwd, ls, ip, status, clear",
+function assistantReply(text){
 
-whoami:"ethical-security-student",
+const t=text.toLowerCase();
 
-pwd:"/home/student",
+if(t.includes("linux")){
 
-ls:"lessons/ labs/ notes/ README.txt",
+return "Linux é um sistema operacional muito usado em servidores e segurança. Comece estudando terminal, arquivos, permissões, processos e serviços.";
 
-ip:"192.0.2.10 — endereço reservado para documentação/simulação",
+}
 
-status:"LAB ONLINE | MODE: TRAINING | TARGET: lab.local",
+if(t.includes("ip")){
 
-clear:"CLEAR"
+return "IP é um endereço lógico usado para comunicação em uma rede. Estude IPv4, IPv6, IP público, IP privado e gateway.";
+
+}
+
+if(t.includes("dns")){
+
+return "DNS traduz nomes de domínio para endereços IP. É uma parte fundamental do funcionamento da internet.";
+
+}
+
+if(t.includes("nmap")){
+
+return "Nmap é uma ferramenta de descoberta e auditoria. Use-a somente em máquinas próprias ou explicitamente autorizadas.";
+
+}
+
+if(t.includes("erro")||
+t.includes("não entendi")||
+t.includes("nao entendi")){
+
+return "Vamos por partes. Volte ao texto da aula, identifique o conceito principal e tente responder novamente. Você pode me dizer qual termo ficou difícil.";
+
+}
+
+return "Posso ajudar com redes, Linux, segurança web, metodologia de pentest e conceitos das aulas. Qual assunto você quer revisar?";
+
+}
+
+
+function sendMessage(){
+
+const input=
+document.getElementById("chatInput");
+
+const text=
+input.value.trim();
+
+if(!text)return;
+
+const chat=
+document.getElementById("chatBox");
+
+chat.innerHTML+=
+'<div class="message user">'+
+text+
+'</div>';
+
+chat.innerHTML+=
+'<div class="message bot">'+
+assistantReply(text)+
+'</div>';
+
+input.value="";
+
+chat.scrollTop=
+chat.scrollHeight;
+
+}
+
+
+/* =========================
+   RECUPERAR LOGIN
+========================= */
+
+const previousUser=
+localStorage.getItem(
+"cyberMafiaCurrentUser"
+);
+
+if(previousUser){
+
+const raw=
+localStorage.getItem(
+accountKey(previousUser)
+);
+
+if(raw){
+
+const account=
+JSON.parse(raw);
+
+user=previousUser;
+
+data={
+
+xp:account.xp||0,
+
+completed:account.completed||[]
 
 };
 
-
-document
-.getElementById("terminalInput")
-.addEventListener("keydown",function(e){
-
-if(e.key!=="Enter")return;
-
-let input=this.value.trim().toLowerCase();
-
-this.value="";
-
-let output=
-document.getElementById("terminalOutput");
-
-if(input==="clear"){
-
-output.textContent="";
-
-return;
-
-}
-
-let response=
-commands[input]||
-"Comando não disponível no simulador.";
-
-output.textContent+=
-"\n\nstudent@cyberlab:~$ "+
-input+
-"\n"+
-response;
-
-output.scrollTop=
-output.scrollHeight;
-
-});
-
-
-function labAnswer(button,port){
-
-document
-.querySelectorAll("#lab .option")
-.forEach(b=>{
-b.classList.remove("correct","wrong");
-});
-
-let result=
-document.getElementById("labResult");
-
-if(port===443){
-
-button.classList.add("correct");
-
-result.className="success";
-
-result.textContent=
-"✅ Correto! HTTPS normalmente utiliza a porta 443.";
-
-if(!data.labReward){
-
-data.xp+=50;
-
-data.labReward=true;
-
-save();
-
-}
-
-}else{
-
-button.classList.add("wrong");
-
-result.className="error";
-
-result.textContent=
-"❌ Tente novamente.";
+document.getElementById(
+"loginScreen"
+).style.display="none";
 
 }
 
 }
-
 
 updateUI();
 
-loadLesson();
-
 </script>
-<!-- CYBERLAB LOGIN -->
-<div id="authScreen" style="
-position:fixed;
-inset:0;
-z-index:9999;
-background:#05080d;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-font-family:Arial,sans-serif;
-">
 
-<div style="
-width:100%;
-max-width:420px;
-background:#0c141e;
-border:1px solid #1d3447;
-border-radius:18px;
-padding:28px;
-box-shadow:0 0 40px rgba(69,255,154,.08);
-">
-
-<div style="text-align:center">
-
-<h1 style="color:#45ff9a;margin-bottom:5px">
-CYBERLAB
-</h1>
-
-<p style="color:#8da1b2">
-Área do aluno
-</p>
-
-</div>
-
-<input
-id="authUsername"
-type="text"
-placeholder="Nome de usuário"
-autocomplete="username"
-style="
-width:100%;
-padding:14px;
-margin:8px 0;
-background:#050a10;
-color:white;
-border:1px solid #294156;
-border-radius:8px;
-">
-">
-
-<input
-id="authPassword"
-type="password"
-placeholder="Sua senha"
-style="
-width:100%;
-padding:14px;
-margin:8px 0;
-background:#050a10;
-color:white;
-border:1px solid #294156;
-border-radius:8px;
-">
-
-<button
-onclick="cyberLogin()"
-style="
-width:100%;
-padding:14px;
-margin-top:10px;
-background:#45ff9a;
-color:#031008;
-border:0;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
-">
-ENTRAR
-</button>
-
-<button
-onclick="cyberRegister()"
-style="
-width:100%;
-padding:14px;
-margin-top:10px;
-background:#101c28;
-color:white;
-border:1px solid #294156;
-border-radius:8px;
-cursor:pointer;
-">
-CRIAR CONTA
-</button>
-
-<p
-id="authMessage"
-style="
-text-align:center;
-color:#8da1b2;
-margin-top:15px;
-">
-</p>
-
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const SUPABASE_URL =
-"https://lsximqltwzjdaocbousm.supabase.co";
-
-const SUPABASE_KEY =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzeGltcWx0d3pqZGFvY2JvdXNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDY5NjQsImV4cCI6MjEwMzY4Mjk2NH0.aIgodMSG1H4oR4QEoPd0a_MHoMsuodfF-DWdBaM2U1U";
-
-const cyberSupabase =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-async function cyberLogin(){
-
-const username =
-document.getElementById("authUsername").value.trim();
-
-const password =
-document.getElementById("authPassword").value;
-
-const message =
-document.getElementById("authMessage");
-
-if(!username || !password){
-
-message.textContent =
-"Digite seu nome de usuário e sua senha.";
-
-return;
-
-}
-
-message.textContent =
-"Entrando...";
-
-const {error} =
-await cyberSupabase.auth.signInWithPassword({
-email:email,
-password:password
-});
-
-if(error){
-
-message.textContent =
-"Erro: "+error.message;
-
-return;
-
-}
-
-message.textContent =
-"Login realizado!";
-
-setTimeout(()=>{
-document.getElementById("authScreen").style.display="none";
-document.getElementById("studentPanel").style.display="block";
-},700);
-
-}
-
-
-async function cyberRegister(){
-
-const email =
-document.getElementById("authEmail").value.trim();
-
-const password =
-document.getElementById("authPassword").value;
-
-const message =
-document.getElementById("authMessage");
-
-if(!email || !password){
-
-message.textContent =
-"Digite um e-mail e uma senha.";
-
-return;
-
-}
-
-if(password.length < 6){
-
-message.textContent =
-"A senha precisa ter pelo menos 6 caracteres.";
-
-return;
-
-}
-
-message.textContent =
-"Criando sua conta...";
-
-const {error} =
-await cyberSupabase.auth.signUp({
-email:email,
-password:password
-});
-
-if(error){
-
-message.textContent =
-"Erro: "+error.message;
-
-return;
-
-}
-
-message.textContent =
-"Conta criada! Verifique seu e-mail para confirmar o cadastro.";
-
-}
-
-
-async function checkCyberSession(){
-
-const {data} =
-await cyberSupabase.auth.getSession();
-
-if(data.session){
-
-document.getElementById("authScreen").style.display="none";
-document.getElementById("studentPanel").style.display="block";
-}
-
-}
-
-checkCyberSession();
-
-</script>
 </body>
 </html>
