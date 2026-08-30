@@ -330,7 +330,256 @@ footer{
 </head>
 
 <body>
+<!-- PAINEL DO ALUNO CYBERLAB -->
 
+<div id="studentPanel" style="
+display:none;
+min-height:100vh;
+background:#05080d;
+color:white;
+font-family:Arial,sans-serif;
+padding:25px 18px;
+">
+
+<div style="
+max-width:900px;
+margin:auto;
+">
+
+<h1 style="
+color:#45ff9a;
+margin-bottom:5px;
+">
+CYBERLAB
+</h1>
+
+<p style="color:#8da1b2;">
+Painel do aluno
+</p>
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+border-radius:15px;
+padding:20px;
+margin:20px 0;
+">
+
+<h2>👋 Bem-vindo!</h2>
+
+<p style="color:#8da1b2;">
+Continue seu treinamento de Cibersegurança.
+</p>
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+<div style="
+flex:1;
+min-width:140px;
+background:#101c28;
+padding:15px;
+border-radius:10px;
+">
+
+<strong style="color:#45ff9a;">
+⭐ XP
+</strong>
+
+<h2 id="xpValue">0</h2>
+
+</div>
+
+<div style="
+flex:1;
+min-width:140px;
+background:#101c28;
+padding:15px;
+border-radius:10px;
+">
+
+<strong style="color:#45ff9a;">
+📊 Progresso
+</strong>
+
+<h2 id="progressValue">0%</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<h2>📚 Seus módulos</h2>
+
+<div id="modulesContainer">
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+padding:18px;
+border-radius:12px;
+margin:12px 0;
+">
+
+<h3>🌐 Módulo 1 — Redes</h3>
+
+<p style="color:#8da1b2;">
+20 perguntas
+</p>
+
+<button
+onclick="startModule(1)"
+style="
+padding:12px 18px;
+background:#45ff9a;
+border:0;
+border-radius:8px;
+font-weight:bold;
+">
+COMEÇAR
+</button>
+
+</div>
+
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+padding:18px;
+border-radius:12px;
+margin:12px 0;
+">
+
+<h3>🐧 Módulo 2 — Linux</h3>
+
+<p style="color:#8da1b2;">
+20 perguntas
+</p>
+
+<button
+onclick="startModule(2)"
+style="
+padding:12px 18px;
+background:#45ff9a;
+border:0;
+border-radius:8px;
+font-weight:bold;
+">
+COMEÇAR
+</button>
+
+</div>
+
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+padding:18px;
+border-radius:12px;
+margin:12px 0;
+">
+
+<h3>🔐 Módulo 3 — Segurança da Informação</h3>
+
+<p style="color:#8da1b2;">
+20 perguntas
+</p>
+
+<button
+onclick="startModule(3)"
+style="
+padding:12px 18px;
+background:#45ff9a;
+border:0;
+border-radius:8px;
+font-weight:bold;
+">
+COMEÇAR
+</button>
+
+</div>
+
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+padding:18px;
+border-radius:12px;
+margin:12px 0;
+">
+
+<h3>🕵️ Módulo 4 — Hacking Ético</h3>
+
+<p style="color:#8da1b2;">
+20 perguntas
+</p>
+
+<button
+onclick="startModule(4)"
+style="
+padding:12px 18px;
+background:#45ff9a;
+border:0;
+border-radius:8px;
+font-weight:bold;
+">
+COMEÇAR
+</button>
+
+</div>
+
+
+<div style="
+background:#0c141e;
+border:1px solid #1d3447;
+padding:18px;
+border-radius:12px;
+margin:12px 0;
+">
+
+<h3>🧪 Módulo 5 — Laboratório & CTF</h3>
+
+<p style="color:#8da1b2;">
+20 perguntas
+</p>
+
+<button
+onclick="startModule(5)"
+style="
+padding:12px 18px;
+background:#45ff9a;
+border:0;
+border-radius:8px;
+font-weight:bold;
+">
+COMEÇAR
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function startModule(module){
+
+alert(
+"Módulo " +
+module +
+" selecionado! Em breve você começará as perguntas."
+);
+
+}
+
+</script>
 <header>
 <nav>
 
@@ -1429,6 +1678,7 @@ message.textContent =
 
 setTimeout(()=>{
 document.getElementById("authScreen").style.display="none";
+document.getElementById("studentPanel").style.display="block";
 },700);
 
 }
@@ -1495,7 +1745,7 @@ await cyberSupabase.auth.getSession();
 if(data.session){
 
 document.getElementById("authScreen").style.display="none";
-
+document.getElementById("studentPanel").style.display="block";
 }
 
 }
