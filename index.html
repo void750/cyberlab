@@ -612,87 +612,306 @@ laboratórios ou ambientes autorizados.
 const lessons = [
 
 {
-title:"O que é Cibersegurança?",
-text:"Cibersegurança é o conjunto de práticas usadas para proteger sistemas, redes, aplicações e dados contra ameaças.",
-question:"Qual é um dos principais objetivos da cibersegurança?",
+title:"Fundamentos de Redes",
+text:"Uma rede de computadores permite que dispositivos troquem informações. Para estudar segurança, é importante entender como os dispositivos se comunicam e como os dados trafegam.",
+question:"Qual é a principal finalidade de uma rede de computadores?",
 options:[
-"Proteger sistemas e dados",
-"Deixar sistemas sem proteção",
-"Remover todas as senhas",
-"Atacar computadores aleatórios"
+"Permitir comunicação entre dispositivos",
+"Eliminar a necessidade de sistemas operacionais",
+"Desativar conexões",
+"Impedir qualquer troca de dados"
 ],
 answer:0,
-why:"A cibersegurança busca proteger sistemas, redes e informações.",
+why:"Redes permitem que dispositivos comuniquem e compartilhem informações e serviços.",
 xp:50
 },
 
 {
-title:"O que é Hacking Ético?",
-text:"Hacking ético consiste em avaliar sistemas com autorização e objetivo definido para encontrar problemas e ajudar a corrigi-los.",
-question:"O que é indispensável em um teste ético?",
+title:"O que é um endereço IP?",
+text:"Um endereço IP identifica uma interface de rede dentro de determinado contexto. Em IPv4, os endereços são representados por quatro números separados por pontos.",
+question:"Para que um endereço IP é utilizado?",
 options:[
-"Autorização",
-"Esconder o teste",
-"Atacar qualquer sistema",
-"Não documentar"
+"Identificar uma interface em uma rede",
+"Criar uma senha",
+"Comprimir arquivos",
+"Instalar programas"
 ],
 answer:0,
-why:"A autorização define que o teste é permitido.",
+why:"O endereço IP é usado para identificar uma interface e permitir a comunicação em redes IP.",
 xp:50
 },
 
 {
-title:"Tipos de Hackers",
-text:"White hat, black hat e grey hat são termos usados para diferenciar contextos de atuação. Em segurança profissional, autorização e escopo são fundamentais.",
-question:"Qual característica é essencial em um teste profissional?",
+title:"IPv4",
+text:"IPv4 utiliza endereços de 32 bits e normalmente é representado em quatro números decimais separados por pontos.",
+question:"Qual destes é um exemplo de endereço IPv4?",
 options:[
-"Ignorar o escopo",
-"Respeitar as regras",
-"Testar qualquer alvo",
-"Evitar documentação"
+"192.168.1.10",
+"HTTP://SITE",
+"AA:BB:CC",
+"255-255-255"
 ],
-answer:1,
-why:"Respeitar regras e escopo mantém a atividade dentro da autorização.",
+answer:0,
+why:"192.168.1.10 possui a representação típica de um endereço IPv4.",
 xp:50
 },
 
 {
-title:"Autorização e Escopo",
-text:"Antes de um teste, é importante definir quais sistemas podem ser avaliados, quando o teste pode ocorrer e quais ações são permitidas.",
-question:"O que deve ser confirmado antes de um teste?",
+title:"IPv6",
+text:"IPv6 foi desenvolvido para ampliar o espaço de endereços disponível e utiliza endereços de 128 bits.",
+question:"Qual característica diferencia o IPv6 do IPv4?",
 options:[
-"O escopo e a autorização",
-"Apenas o horário",
-"Somente o nome do cliente",
-"Nada"
+"IPv6 possui espaço de endereços muito maior",
+"IPv6 não utiliza redes",
+"IPv6 só funciona sem internet",
+"IPv6 substitui senhas"
 ],
 answer:0,
-why:"Escopo e autorização determinam os limites do trabalho.",
+why:"O IPv6 utiliza 128 bits, oferecendo um espaço de endereçamento muito maior.",
 xp:50
 },
 
 {
-title:"Laboratório Seguro",
-text:"Máquinas virtuais, CTFs e aplicações criadas para treinamento permitem praticar segurança sem atingir sistemas de terceiros.",
-question:"Onde é adequado praticar?",
+title:"IP Público e Privado",
+text:"Endereços privados são utilizados dentro de redes locais e não são roteados diretamente pela internet pública. Endereços públicos podem ser utilizados para comunicação na internet.",
+question:"Qual endereço pertence a uma faixa privada comum de IPv4?",
 options:[
-"Laboratório próprio ou autorizado",
-"Site aleatório",
-"Conta de outra pessoa",
-"Computador de um desconhecido"
+"192.168.1.20",
+"8.8.8.8",
+"1.1.1.1",
+"203.0.113.10"
 ],
 answer:0,
-why:"Ambientes próprios ou autorizados permitem treinamento seguro.",
+why:"192.168.0.0/16 é uma das faixas privadas definidas para redes internas.",
+xp:50
+},
+
+{
+title:"Gateway",
+text:"O gateway padrão normalmente é o dispositivo utilizado por uma máquina para alcançar outras redes.",
+question:"Qual é uma função comum do gateway padrão?",
+options:[
+"Encaminhar tráfego para outras redes",
+"Criar arquivos de texto",
+"Trocar a senha do usuário",
+"Formatar o computador"
+],
+answer:0,
+why:"O gateway permite que dispositivos da rede local alcancem outras redes.",
+xp:50
+},
+
+{
+title:"DNS",
+text:"O DNS, Domain Name System, permite associar nomes de domínio a informações como endereços IP.",
+question:"Qual é uma função do DNS?",
+options:[
+"Resolver nomes de domínio",
+"Criptografar todos os arquivos",
+"Substituir o sistema operacional",
+"Desligar servidores"
+],
+answer:0,
+why:"O DNS permite resolver nomes como exemplo.com para informações de rede.",
+xp:50
+},
+
+{
+title:"DHCP",
+text:"DHCP é utilizado para fornecer configurações de rede automaticamente aos dispositivos.",
+question:"Qual configuração pode ser fornecida por DHCP?",
+options:[
+"Endereço IP",
+"Senha do banco",
+"Conteúdo de arquivos pessoais",
+"Chave privada de criptografia"
+],
+answer:0,
+why:"DHCP pode fornecer IP, máscara, gateway e servidores DNS, entre outras configurações.",
+xp:50
+},
+
+{
+title:"MAC Address",
+text:"Um endereço MAC é associado a uma interface de rede e é utilizado em comunicações de camada de enlace.",
+question:"O endereço MAC está associado principalmente a qual componente?",
+options:[
+"Interface de rede",
+"Arquivo de texto",
+"Conta de e-mail",
+"Senha"
+],
+answer:0,
+why:"O MAC identifica uma interface de rede no contexto da camada de enlace.",
+xp:50
+},
+
+{
+title:"Portas de Rede",
+text:"Portas permitem diferenciar serviços e aplicações que utilizam protocolos de transporte como TCP e UDP.",
+question:"Qual é a finalidade de uma porta de rede?",
+options:[
+"Diferenciar serviços e aplicações",
+"Identificar o fabricante do monitor",
+"Criar usuários",
+"Formatar discos"
+],
+answer:0,
+why:"Portas ajudam a direcionar o tráfego para o serviço ou aplicação correspondente.",
+xp:50
+},
+
+{
+title:"TCP",
+text:"TCP é um protocolo orientado à conexão que oferece mecanismos para entrega confiável e ordenada de dados.",
+question:"Qual característica está associada ao TCP?",
+options:[
+"Entrega confiável e ordenada",
+"Ausência total de controle",
+"Somente transmissão de áudio",
+"Uso exclusivo em redes locais"
+],
+answer:0,
+why:"TCP possui mecanismos de confirmação, retransmissão e ordenação.",
+xp:50
+},
+
+{
+title:"UDP",
+text:"UDP é um protocolo de transporte mais simples que não estabelece uma conexão como o TCP e não garante a entrega dos dados.",
+question:"Qual característica descreve o UDP?",
+options:[
+"Não garante entrega dos dados",
+"Sempre retransmite pacotes",
+"Exige conexão TCP",
+"É um sistema operacional"
+],
+answer:0,
+why:"UDP não fornece a mesma garantia de entrega e ordenação oferecida pelo TCP.",
+xp:50
+},
+
+{
+title:"HTTP",
+text:"HTTP é um protocolo utilizado para comunicação entre clientes e servidores na web.",
+question:"Para que HTTP é utilizado?",
+options:[
+"Comunicação de aplicações web",
+"Gerenciamento de energia",
+"Criação de usuários do sistema",
+"Formatação de discos"
+],
+answer:0,
+why:"HTTP é um dos principais protocolos utilizados para comunicação na web.",
+xp:50
+},
+
+{
+title:"HTTPS",
+text:"HTTPS utiliza HTTP sobre TLS para proteger a comunicação entre cliente e servidor contra diversos tipos de interceptação e alteração.",
+question:"Qual é uma vantagem do HTTPS?",
+options:[
+"Protege a comunicação usando TLS",
+"Elimina todos os ataques possíveis",
+"Dispensa autenticação",
+"Impede qualquer erro do servidor"
+],
+answer:0,
+why:"TLS ajuda a proteger a confidencialidade e integridade da comunicação.",
+xp:50
+},
+
+{
+title:"SSH",
+text:"SSH é um protocolo utilizado para acesso remoto seguro e administração de sistemas.",
+question:"Qual é uma utilização comum do SSH?",
+options:[
+"Administrar um sistema remotamente",
+"Criar imagens automaticamente",
+"Substituir o DNS",
+"Formatar qualquer computador"
+],
+answer:0,
+why:"SSH permite sessões remotas autenticadas e protegidas por criptografia.",
+xp:50
+},
+
+{
+title:"Firewall",
+text:"Um firewall pode controlar tráfego de rede de acordo com regras definidas, ajudando a reduzir acessos não autorizados.",
+question:"Qual é uma função de um firewall?",
+options:[
+"Filtrar tráfego de rede",
+"Criar automaticamente todas as senhas",
+"Substituir o sistema operacional",
+"Recuperar qualquer arquivo apagado"
+],
+answer:0,
+why:"Firewalls podem permitir ou bloquear tráfego conforme regras configuradas.",
+xp:50
+},
+
+{
+title:"Proxy",
+text:"Um proxy atua como intermediário entre clientes e outros serviços. Dependendo da configuração, pode controlar, registrar ou encaminhar requisições.",
+question:"O que caracteriza um proxy?",
+options:[
+"Atuar como intermediário",
+"Ser necessariamente um antivírus",
+"Ser uma senha",
+"Ser um tipo de arquivo"
+],
+answer:0,
+why:"Um proxy recebe e encaminha requisições entre diferentes participantes da comunicação.",
+xp:50
+},
+
+{
+title:"VPN",
+text:"Uma VPN cria um túnel protegido entre pontos de comunicação. É usada em diversos cenários, incluindo acesso remoto e conexão entre redes.",
+question:"Qual é uma finalidade comum de uma VPN?",
+options:[
+"Criar um túnel protegido para comunicação",
+"Eliminar a necessidade de internet",
+"Substituir todos os firewalls",
+"Criar automaticamente contas bancárias"
+],
+answer:0,
+why:"VPNs podem proteger o tráfego entre pontos por meio de túneis e mecanismos de segurança.",
+xp:50
+},
+
+{
+title:"Modelo OSI",
+text:"O modelo OSI organiza conceitos de comunicação de rede em sete camadas, ajudando profissionais a entender e diagnosticar problemas.",
+question:"Quantas camadas possui o modelo OSI?",
+options:[
+"7",
+"3",
+"5",
+"10"
+],
+answer:0,
+why:"O modelo OSI possui sete camadas.",
+xp:50
+},
+
+{
+title:"Captura de Tráfego",
+text:"Ferramentas de análise de tráfego podem ajudar a estudar protocolos e diagnosticar problemas. Em segurança, a captura deve ser realizada somente em redes autorizadas.",
+question:"Onde é apropriado analisar tráfego de rede?",
+options:[
+"Em uma rede própria ou autorizada",
+"Na rede de qualquer pessoa",
+"Em uma rede pública sem autorização",
+"Em computadores desconhecidos"
+],
+answer:0,
+why:"Análise de tráfego deve respeitar autorização e privacidade.",
 xp:50
 }
 
 ];
-
-/*
-   A estrutura abaixo está preparada
-   para receber as 100 aulas.
-*/
-
 while(lessons.length < 100){
 
 const n=lessons.length+1;
